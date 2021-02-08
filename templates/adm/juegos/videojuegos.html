@@ -1,0 +1,55 @@
+   {% extends "base.html" %}
+   {% block title %} Gestión de Videojuegos {% endblock title%}   
+   {% block content %}
+    <!--BODY-->
+    
+    <div>
+        <h1 class="center-align titulo">Gestionar Videojuegos</h1>
+        <div class="row">
+            
+            <div class="col-md-6">
+                <nav >
+                    <form method="GET">
+                        {{myFilter.form}}
+                        <!-- <input  class="text-white" type="search" placeholder="Buscar Videojuego" aria-label="Buscar Videojuego"> -->
+                        <button class="btn btn-sucess btn-lg btn-block" type="submit">Buscar Videojuego</button>
+                      </form>
+                </nav> 
+            </div>
+                                                    
+                <div class="col-md-6 " id="container-table" >                    
+                            <table>
+                              <thead>
+                                  <tr class="center-align" >
+                                        <th>ID</th>
+                                      <th>Título</th>
+                                      <th>Año</th>
+                                      <th>Generos</th>
+                                      <th>Consolas</th>
+                                      
+                                      <td>Eliminar</td>
+                                      <th>Modificar</th>
+                                  </tr>
+                              </thead>
+                              {%for juego in juegos %}
+                                <tr>
+                                    <td>{{juego.id_juego}}</td>
+                                    <td>{{juego.titulo}}</td>
+                                    <td>{{juego.anio}}</td>
+                                    <td>{{juego}}</td>
+                                    <td>{{juego}}</td>                                    
+                                    <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'eliminar_videojuegos' administrador.nombre juego.id_juego %}">Eliminar</a></td>
+                                    <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'editar_videojuegos' administrador.nombre juego.id_juego %}">Modificar</a></td>
+                                </tr>
+                            {%endfor%}
+                          </table>
+                    {%include 'pagination.html' with page=juegos%}	                    
+                    <a href="{% url 'registro_videojuegos' administrador.nombre %}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Agregar</a>
+                </div>
+            <a href="{% url 'perfil_adm' administrador.nombre %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+    {% endblock content %}

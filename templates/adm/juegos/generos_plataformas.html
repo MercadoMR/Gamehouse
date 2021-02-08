@@ -1,0 +1,73 @@
+   {% extends "base.html" %}
+   {% block title %} Gestión de Generos y Plataformas {% endblock title%}   
+   {% block content %}
+    <!--BODY-->    
+    <div>
+        <h1 class="center-align titulo">Gestionar Plataformas y Generos</h1>
+        <div class="row center-align ">
+            <div class="col-md-6">
+                <div  id="container-table" >
+                    <table>
+                        <thead>
+                            <tr class="center-align" >
+                                <th>Generos</th>                                                                  
+                            </tr>
+                        
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>ID</td>                               
+                                <td>Eliminar</td>
+                                <td>Modificar</td>
+                            </tr>
+                        </thead>
+                    </thead>
+                    {% csrf_token %}
+                        {%for genero in fgenero %}
+                            <tr>
+                                <td>{{genero.nombre}}</td>
+                                <td>{{genero.id_genero}}</td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'eliminar_Genero' administrador.nombre genero.id_genero %}">Eliminar</a></td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'editar_Genero' administrador.nombre genero.id_genero %}">Modificar</a></td>
+                            </tr>
+                        {%endfor%}
+                    </table>					                    
+                    <a href="{% url 'registro_gen_pla' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Agregar</a>                      
+                </div> 
+            </div>   
+            
+            
+
+                <div  id="container-table" >
+                    <table>
+                        <thead>
+                            <tr class="center-align" >
+                                <th>Plataforma</th>                                                                  
+                            </tr>
+                        
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>ID</td>                               
+                                <td>Eliminar</td>
+                                <td>Modificar</td>
+                            </tr>
+                        </thead>
+                    </thead>
+                    {% csrf_token %}
+                        {%for plataforma in fplataforma %}
+                            <tr>
+                                <td>{{plataforma.nombre}}</td>
+                                <td>{{plataforma.id_plataforma}}</td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'eliminar_Plataforma' administrador.nombre plataforma.id_plataforma%}">Eliminar</a></td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'editar_Plataforma' administrador.nombre plataforma.id_plataforma %}">Modificar</a></td>
+                            </tr>
+                        {%endfor%}
+                    </table>					                    
+                    <a href="{% url 'registro_gen_pla' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Agregar</a>                      
+                </div>                          
+            <a href="{% url 'perfil_adm' administrador.nombre%}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+        </div>
+    </div>
+    <!--FOOTER-->
+    {% endblock content %}

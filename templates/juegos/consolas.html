@@ -1,0 +1,54 @@
+{% extends "baseU.html" %}
+{% load static %}
+{% block title %} Consolas {% endblock title%}   
+{% block content %}
+    <div class="container-generos">
+        <header>
+            <div class="tiposgeneros" id="tiposgeneros">
+                <a href="#" class="activo">Todos</a>
+                <a href="#">XBOX ONE</a>
+                <a href="#">PS4</a>
+                <a href="#">Nintendo Switch</a>
+                <a href="#">Wii U</a>
+                <a href="#">PS Vita</a>
+                <a href="#">3DS</a>
+                <a href="#">Android</a>
+                <a href="#">XBOX 360</a>
+                <a href="#">PS3</a>
+                <a href="#">Wii</a>
+                <a href="#">PSP</a>
+                <a href="#">DS/ DSi</a>
+                <a href="#">Windows/ Linux</a>
+                <a href="#">Ipad/ Iphone</a>
+                <a href="#">XBOX</a>
+                <a href="#">PS2</a>
+                <a href="#">GameCube</a>
+                <a href="#">Gameboy Advance</a>
+                <a href="#">Dreamcast</a>
+                <a href="#">J2ME</a>
+                <a href="#">PS1</a>
+                <a href="#">Nintendo 64</a>
+                <a href="#">Gameboy Color</a>
+                <a href="#">SNES</a>
+                <a href="#">Neo-Geo</a>
+                <a href="#">Arcade</a>
+                <a href="#">NES</a>
+                <a href="#">Gameboy</a>                
+            </div>
+        </header>
+        
+<section class="grid" id="grid">
+    {%for LOL in fJuego %}
+        <div class="item" 
+            data-categoria="lucha"
+            data-etiquetas="lucha mortal combat play station xbox">
+            <div class="item-games">
+                {{LOL.titulo}}
+                <!-- <img src="{{LOL.titulo}}" alt=""> -->
+            </div>
+        </div>     
+    {%endfor%}                 
+</section>
+</div>
+    
+{% endblock content %}

@@ -1,0 +1,455 @@
+{% extends "baseU.html" %}
+{% load static %}
+{% block title %} Juegos {% endblock title%}   
+{% block content %}
+<!-- https://codepen.io/jexordexan/pen/yyYEJa -->
+<style>
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+}
+
+a .game_imagen{
+    text-decoration: none;
+    color: #5C7FB8
+  }
+  
+a .game_imagen:hover{
+    text-decoration: underline;
+  }
+  
+.videogame-card {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    color: #A9A8A3;
+    padding: 40px 0;
+  }
+  
+.container_videogame {
+    margin: 0 auto;
+    width: 780px;
+    height: 4540px;
+    background: #F0F0ED;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+.hero {
+    height: 342px;  
+    margin:0;
+    position: relative;
+    overflow: hidden;
+    z-index:1;
+    
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+      
+  }
+  
+.hero:before {
+    content:'';
+    width:100%; height:100%;
+    position:absolute;
+    overflow: hidden;
+    top:0; left:0;
+    background:red;
+    background: url("https://wallpapercave.com/wp/wp7864479.png");
+    z-index:-1;
+   
+    transform: skewY(-2.2deg);
+    transform-origin:0 0;
+    /* -webkit-backface-visibility: hidden;  */
+    
+  }
+  
+.cover {
+    position: absolute;
+    top: 160px;
+    left: 40px;
+    z-index: 2;
+  }
+  
+
+.details_videogame {
+    font-family: 'Black+Ops+One', sans-serif;
+    padding: 190px 0 0 280px;
+}   
+    
+.title111 {
+      color: white;
+      font-size: 26px;
+      margin-bottom: 13px;
+      position: relative;
+}
+
+.details_videogame span {
+      position: relative;
+      top: 3px;
+      margin-left: 12px;
+      background: #38dfa7;
+      border-radius: 5px;
+      color: #285305;
+      font-size: 16px;
+      padding: 0px 4px;      
+    }
+  
+.title222 {    
+      color: #C7C1BA;
+      font-size: 23px;    
+      font-weight: 300;
+      margin-bottom: 15px;
+}
+
+.description_videogame {
+    
+    bottom: 0px;
+    height: 200px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #B1B0AC;
+    
+  }
+  
+.column111 {
+    padding-left: 50px;
+    padding-top: 120px;
+    width: 220px;
+    float: left;
+    text-align: center;
+  }
+  
+.tag_tipo {
+    background: white;
+    border-radius: 10px;
+    padding: 3px 8px;
+    font-size: 14px;
+    margin-right: 4px;
+    line-height: 35px;
+    cursor: pointer;
+  }
+  
+.tag_tipo:hover {
+    background: #ddd;
+  }
+  
+.column222 {
+    padding-left: 41px;
+    padding-top: 30px;
+    margin-left: 20px;
+    width: 480px;
+    float: left;
+  }
+  
+.avatars {
+    margin-top: 23px; 
+  }
+
+  .cont {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  margin: 4% auto;
+  background: #111;
+  color: #EEE;
+  border-radius: 5px;
+  border: thin solid #444;
+  overflow: hidden;
+}
+
+div.stars {
+  /* width: 540px; */
+  display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 2px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+input#id_guion_9.star:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input#id_gusto_9.star:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input#id_artes_9.star:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input#id_jugabilidad_9.star:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input#id_tecnico_9.star:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-size: 2rem;
+  font-family: FontAwesome;
+}
+
+::selection{
+  background: rgb(0,123,255,0.3);
+}
+.wrapper{
+  max-width: 600px;
+  padding: 0 20px;
+}
+.wrapper .parent-tab{
+  margin-bottom: 8px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.18);
+}
+.wrapper .parent-tab label{
+  background: #007bff;
+  padding: 1px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 3px;
+  position: relative;
+  z-index: 99;
+  transition: all 0.3s ease;
+}
+.wrapper .parent-tab label:hover{
+  background: #006fe6;
+}
+.parent-tab input:checked ~ label{
+  border-radius: 3px 3px 0 0;
+  background: #006fe6;
+}
+.wrapper label span{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: 0 -1px 1px #0056b3;
+}
+.parent-tab label .icon{
+  position: relative;
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
+  color: #007bff;
+  display: block;
+  background: #fff;
+  border-radius: 50%;
+  text-shadow: 0 -1px 1px #0056b3;
+}
+
+.parent-tab label .icon i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.parent-tab input:checked ~ label .icon i:before{
+  content: '\f068';
+}
+.wrapper .parent-tab .content{
+  max-height: 0px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  transition: all 0.4s ease;
+}
+.parent-tab input:checked ~ .content{
+  max-height: 100vh;
+}
+.tab-1 input:checked ~ .content{
+  padding: 15px 20px;
+}
+.parent-tab .content p{
+  padding: 15px 20px;
+  font-size: 16px;
+}
+input[type="radio"],
+input[type="checkbox"]{
+  display: none;
+}
+</style>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+ <!--JUMBOTRON-->
+
+ <div class="videogame-card">
+   
+   <div class="container_videogame">
+     <a href="{{imagen.referencia}}" class="game_imagen"><img src="{{imagen.referencia}}" width="160" height="230" alt="{{imagen.alt}}" class="cover" /></a>
+         
+     <div class="hero">
+             
+      <div class="details_videogame">
+        
+         <div class="title222" >Videojuego:</div>        
+         <a href="https://www.youtube.com/results?search_query=videogame+{{juego.titulo}}"><div class="title111" ><strong>{{juego.titulo}}</strong></div></a>
+         <span><a href="{% url 'agregar_videojuego' user.id juego.id_juego %}">AGREGAR VIDEOJUEGO </a></span>
+      </div> <!-- end details_videogame -->
+       
+       <!--  -->
+     </div> <!-- end hero -->
+     
+     <div class="description_videogame">
+       
+       <div class="column111" >
+         <p>Plataforma: </p>
+         <div class="row tag_tipo">
+          {% for plataforma in juego.plataformas.all %}
+          <span style="color:black;">{{plataforma.nombre}}, </span>
+          {% endfor %}                   
+         </div>
+         <p>Generos: </p>
+         <div class="row tag_tipo">
+           {% for genero in juego.generos.all %}
+           <span  style="color:black;">{{genero.nombre}}, </span>
+          {% endfor %}
+         </div>
+         <div class="avatars " style="color:black;">
+          {% for opinion in opiniones %}
+            <div class="row tag_tipo">
+              <p >Jugador:{{ opinion.jugador }} <br> Comentario:{{ opinion.comentario }} <br> Calificacion:{{ opinion.gusto }}</p>
+            </div>
+            
+          {% endfor%}
+         </div>
+       </div> <!-- end column111 -->
+       
+       <div class="column222">        
+         <p style="color:black;">{{juego.descripcion}}</p>
+         {% if user.is_authenticated %}
+
+         <div class="avatars">
+            <div class="wrapper">
+              <!-- Accordion Heading One -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-1" checked>
+                <label for="tab-1">
+                  <span>Elección de Estrellas</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">10 estrellas es la mejor calificación en la caracteristica elejida.
+                    <br>1 estrella la peor calificación para la caracteristica.</p>                  
+                </div>
+              </div>          
+              <!-- Accordion Heading Two -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-2">
+                <label for="tab-2">
+                  <span>Gusto</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">Se puntua si el juego fue del gusto del jugador tanto asi que podria recomendarlo a un amigo.</p>
+                </div>
+              </div>
+
+              <!-- Accordion Heading Three -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-3">
+                <label for="tab-3">
+                  <span>Guión</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">Te gusto la historia del juego asi como un descenlace apropiado.</p>
+                </div>
+              </div>
+
+              <!-- Accordion Heading Four -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-4">
+                <label for="tab-4">
+                  <span>Artes</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">El diseño de la musica, paisaje y personajes cumplian con las espectativas de este juego</p>
+                </div>
+              </div>
+          
+              <!-- Accordion Heading Five -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-5">
+                <label for="tab-5">
+                  <span>Jugabilidad</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">Cuando lo jugaste te resulto sencillo o dificil de aprender para dominar el juego</p>
+                </div>
+              </div>
+
+              <!-- Accordion Heading Six -->
+              <div class="parent-tab">
+                <input type="radio" name="tab" id="tab-6">
+                <label for="tab-6">
+                  <span>Técnico</span>
+                  <div class="icon"><i class="fas fa-plus"></i></div>
+                </label>
+                <div class="content">
+                  <p style="color:black;">El juego no se bloqueaba al momento de jugarlo <br> ¿Los menus eran faciles de usar?</p>
+                </div>
+              </div>
+            </div>
+          <form method="POST">
+          {% csrf_token %}
+          {% for aspecto in fopinion %}
+          <div class="cont" >
+            <p style="color:white;">{{aspecto.label}}</p>
+            <div class="stars"  >
+            {% for radio in aspecto reversed %}
+            {{ radio.tag }}
+              <label class="star star-{{radio.choice_label}}" for="{{ radio.id_for_label }}">
+             <div style="font-size: 1rem;">
+              {{ radio.choice_label }}
+             </div >
+              
+              </label>
+            {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+          <input type="hidden" name="jugador" value="{{ user.get_username }}">
+          <p style="color:black;" >¿Que te parece el juego?</p>
+          <textarea style="color:black;" name="comentario" cols="100" rows="20" placeholder="Escribir comentario..." >                        
+          </textarea>
+          <span style="white-space: pre-wrap;">
+            <input id="btn1" class="btn btn-success btn-lg btn-block" type="submit" value="Enviar Todo" >      
+          </span>
+          </form>
+          {% endif %}
+       
+         </div> <!-- end avatars --> 
+ 
+       </div> <!-- end column222 -->
+       
+       
+     </div> <!-- end description_videogame -->
+   </div> <!-- end container_videogame -->
+ </div> <!-- end videogame-card -->
+
+{% endblock content %}

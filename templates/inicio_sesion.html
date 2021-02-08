@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- #{% block <name>%}{% endblock <name> %} -->
+
+    <title> {% block title %}GameHome{% endblock title %} </title>
+   
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Black+Ops+One|Orbitron|Roboto&display=swap" rel="stylesheet">     
+    
+    <!-- BOOTSTRAP-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    rel="stylesheet" >
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+    rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">    
+
+    <!-- CSS Estilos -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+        <!--NAVAR-->
+        <nav class="fixed-top">
+            <div class="menu">
+                <ul>
+                        <li><a href="{% url 'index' %}"><i class="fa fa-gamepad"></i></a></li>
+                        <li><a href="{% url 'index' %}" class="menu-item">Inicio</a></li>
+                        <li><a href="#" id="searcher"><i class="fa fa-search"></i></a></li>
+                </ul>
+                <div class="searcher-form">
+                    <form action="{% url 'busqueda' %}" method="GET">
+                        <input type="text" name="search" 
+                        placeholder="Buscar Juego...">
+                        <button type="submit">O.K.</button>
+                    </form>
+                </div>
+                <a class="close"><i class="fa fa-times"></i></a>
+            </div>
+        </nav>
+        <hr>
+<body>
+    <div>
+        <h1 class="center-align titulo">LOGIN</h1>
+    </div>
+ <div class="row login-box">
+ <form method="POST">
+    {%csrf_token%}
+        <div class="login-text-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" placeholder="Nombre usuario" name="username" >
+        </div>
+        <div class="login-text-box">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" placeholder="Introduce contraseña" name="password" >
+        </div>
+        <button  class="btn btn-sucess btn-lg btn-block" type="submit">Aceptar</button>
+        <a href="{% url 'registro' %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Registrar</a>
+   </form>
+   </div>
+
+</body>
+
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- JS Main -->
+    <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
+    <!-- JS Main -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+              crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#searcher').click(function(){
+                $('.menu-item').addClass('hide-item')
+                $('.searcher-form').addClass('active')
+                $('.close').addClass('active')
+                $('#searcher').hide()
+            })
+            $('.close').click(function(){
+                $('.menu-item').removeClass('hide-item')
+                $('.searcher-form').removeClass('active')
+                $('.close').removeClass('active')
+                $('#searcher').show()
+            })
+        })
+        window.addEventListener('scroll',function(){
+            var nav=document.querySelector("nav");
+            nav.classList.toggle("sticky",window.scrollY>0);
+        })
+    </script>
+</html>
+      <!--BODY-->
+

@@ -1,0 +1,21 @@
+{% extends "baseU.html" %}
+{% block title %} Busqueda de Videojuegos {% endblock title%}   
+{% block content %}
+ <!--BODY-->
+<div>
+    <h1 class="center-align titulo"> Resultado de la Busqueda =) </h1>
+{% if fVJuego %}
+    {% for jueguito in fVJuego %}
+        <center><strong><a href="{% url 'ver_juego' jueguito.id_juego%}"> {{jueguito.titulo}} </a></strong></center>
+    {% endfor %}
+{% else %}
+    <center><strong> Nada encontrado :c </strong></center>
+{% endif %}
+
+</div>
+
+
+
+
+ <!--FOOTER-->
+ {% endblock content %}

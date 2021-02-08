@@ -1,0 +1,77 @@
+{% extends "baseU.html" %}
+{% block title %} MODIFICAR GUSTOS {% endblock title%}   
+{% block content %}             
+     <!--BODY--> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     <script>
+         $(document).ready(function(){
+             $('.chkvalueG').click(function(){
+                 var txt1="";
+                 $('.chkvalueG:checked').each(function(){
+                     txt1+=$(this).val()+","
+                 });
+                 txt1=txt1.substring(0,txt1.length-1);
+                 $('#txtvaluesG').val(txt1);
+             });
+         });
+     </script>
+     <script>
+         $(document).ready(function(){
+             $('.chkvalueP').click(function(){
+                 var txt="";
+                 $('.chkvalueP:checked').each(function(){
+                     txt+=$(this).val()+","
+                 });
+                 txt=txt.substring(0,txt.length-1);
+                 $('#txtvaluesP').val(txt);
+             });
+         });
+     </script>
+     <div>
+        <h1 class="center-align titulo">Modificar Generos y Plataformas</h1>
+      </div>
+     <form method="POST">
+        {% csrf_token %}
+     <div class="row register-box">
+     <div>
+            <h1 class="center-align titulo">Elija sus <br> Plataformas preferidas</h1>          
+         <div class="row text-black">
+            {% for value,label in fgustos.generos.field.choices %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <li>
+                    <label class="checkbox-label-container">
+                        <input type="checkbox" value="{{ value }}" name="generos">
+                        <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                            <strong>
+                            <span id="{{ value }}">{{ label }}</span></a></strong>
+                    </label>
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+     </div>
+        
+    <div>
+            <h1 class="center-align titulo">Elija sus <br> Plataformas preferidas</h1>
+        <div class="row text-black">
+            {% for value,label in fgustos.plataformas.field.choices %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <li>
+                    <label class="checkbox-label-container">
+                        <input type="checkbox" value="{{ value }}" name="plataformas">
+                        <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                            <strong>
+                            <span id="{{ value }}">{{ label }}</span></a></strong>
+                    </label>
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <input href="{% url 'gusto' user.get_username %}" id="btn1" class="btn btn-sucess btn-lg btn-block" type="submit" value="Aceptar" >
+    <a href="{% url 'gusto' user.get_username %}" class="btn btn-danger btn-lg btn-block" >Regresar</a>
+    </div>
+</form>
+     {% endblock content %}

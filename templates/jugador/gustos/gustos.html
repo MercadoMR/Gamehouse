@@ -1,0 +1,38 @@
+{% extends "baseU.html"%}
+{% block title %} Mi Perfil{% endblock title %}
+{% block content %}    
+        <!--BODY-->
+        {% if user.get_username == jugador.nickname %}
+        <div>
+            <h1 class="center-align titulo">Elija su Nuevo Gusto </h1>
+        </div>
+        <div class="row register-box">
+            <div class="col-md-3 text-white">
+                <h1 class="center-align titulo">Modificar Gustos </h1>
+            </div>        
+            <div class="col-md-3 center-align">
+                <a href="{% url 'mis_gustos' jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Mis Gustos</a>                
+                <a href="{% url 'mis_juegos' jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Mis Juegos</a>                
+                <a href="{% url 'mis_palabras'  jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Mis Palabras</a>
+                <a href="{% url 'jugador' jugador.nickname%}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Regresar</a>                
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <h1 class="center-align titulo">{{jugador.nickname|upper}} </h1>
+        </div> 
+        <div class="row register-box">
+            <div class="col-md-4 text-white">
+                <H2>Datos del jugador</H2>
+                <h3>Nombre: {{jugador.usuario.nombre}} </h3>
+                <h3>Edad: {{jugador.usuario.fec_nac}} </h3>
+            </div>
+            <div class="col-md-3 center-align">                
+                <a href="{% url 'index' %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Sus Opiniones</a>                                
+            </div>
+        </div>
+        {% endif %}
+         
+
+
+{% endblock content %}

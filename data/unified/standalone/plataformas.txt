@@ -1,0 +1,30 @@
+
+Android
+Arcade
+Dreamcast
+Gameboy
+Gameboy Advance
+Gameboy Color
+J2ME
+Linux
+NES
+Neo Geo
+Nintendo 3DS
+Nintendo 64
+Nintendo DS
+Nintendo GameCube
+Nintendo Switch
+PS Vita
+PSP
+PlayStation 1
+PlayStation 2
+PlayStation 3
+PlayStation 4
+SNES
+Wii
+Wii U
+Windows
+Xbox
+Xbox 360
+Xbox One
+iOS

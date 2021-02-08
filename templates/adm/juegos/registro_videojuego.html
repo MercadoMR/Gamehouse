@@ -1,0 +1,283 @@
+   {% extends "base.html" %}
+   {% block title %} REGISTRAR VIDEOJUEGO {% endblock title%}   
+   {% block content %}             
+        <!--BODY-->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.chkvalueG').click(function(){
+                    var txt1="";
+                    $('.chkvalueG:checked').each(function(){
+                        txt1+=$(this).val()+","
+                    });
+                    txt1=txt1.substring(0,txt1.length-1);
+                    $('#txtvaluesG').val(txt1);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('.chkvalueP').click(function(){
+                    var txt="";
+                    $('.chkvalueP:checked').each(function(){
+                        txt+=$(this).val()+","
+                    });
+                    txt=txt.substring(0,txt.length-1);
+                    $('#txtvaluesP').val(txt);
+                });
+            });
+        </script>
+<div>
+    <h1 class="center-align titulo">REGISTRAR VIDEOJUEGO</h1>
+</div>
+<form method="POST">
+    {% csrf_token %}
+<div class="row register-box">
+    <h1></h1>
+    <div class="col-md-3">          
+            <div class="login-text-box form-group">
+                <label for="{{VJuegos.titulo.id_for_label }}" class="col-sm-8">{{VJuegos.titulo.label}}</label>
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                <div class="col-sm-12">{{VJuegos.titulo}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{VJuegos.agnio.id_for_label }}" class="col-sm-8">{{VJuegos.agnio.label}}</label>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <div class="col-sm-12">{{VJuegos.agnio}}</div>
+            </div>
+            <!-- <div class="login-text-box form-group">
+                <label for="{{fcompania.nombre.id_for_label }}" class="col-sm-8">{{fcompania.nombre.label}}</label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fcompania.nombre}}</div>
+            </div> -->
+            <!-- <div class="login-text-box form-group md-form">
+                <label for="{{VJuegos.descripcion.id_for_label }}" class="col-sm-8">{{VJuegos.descripcion.label}}</label>
+                <i class="fa fa-list" aria-hidden="true"></i>                
+                <textarea id="form10" class="md-textarea form-control" rows="3">{{VJuegos.descripcion}}</textarea>
+                <label for="form10">Escribe...</label>
+              </div> -->
+            <div class="login-text-box form-group">
+                <label for="{{VJuegos.descripcion.id_for_label }}" class="col-sm-8">{{VJuegos.descripcion.label}}</label>
+                <i class="fa fa-list" aria-hidden="true"></i>
+                <div class="col-sm-12">{{VJuegos.descripcion}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fImagen.referencia.id_for_label }}" class="col-sm-8">{{fImagen.referencia.label}}</label>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fImagen.referencia}}</div>
+                <!-- <input type="text"  placeholder="URL Imagen" name="imageurl" > -->
+            </div>
+            
+    </div>
+
+    <div class="row text-black">
+        {% for value,label in VJuegos.generos.field.choices %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <li>
+                <label class="checkbox-label-container">
+                    <input type="checkbox" value="{{ value }}" name="generos">
+                    <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                        <strong>
+                        <span id="{{ value }}">{{ label }}</span></a></strong>
+                </label>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row text-black">
+        {% for value,label in VJuegos.plataformas.field.choices %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <li>
+                <label class="checkbox-label-container">
+                    <input type="checkbox" value="{{ value }}" name="plataformas">
+                    <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                        <strong>
+                        <span id="{{ value }}">{{ label }}</span></a></strong>
+                </label>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row text-black">
+        {% for value,label in VJuegos.companias.field.choices %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <li>
+                <label class="checkbox-label-container">
+                    <input type="checkbox" value="{{ value }}" name="companias">
+                    <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                        <strong>
+                        <span id="{{ value }}">{{ label }}</span></a></strong>
+                </label>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- </div> 
+
+    <div class="row register-box ">                -->
+    <!-- <div class="col-md-2">
+        <div class="radio-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Acción" class="custom-control-input chkvalueG" name="genero-juego" id="1">
+                <label class="custom-control-label" for="1">Acción</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Aventura" class="custom-control-input chkvalueG" name="genero-juego"  id="2">
+                <label class="custom-control-label" for="2">Aventura</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Educativo" class="custom-control-input chkvalueG" name="genero-juego" id="3">
+                <label class="custom-control-label" for="3">Educativo</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Rompecabezas" class="custom-control-input chkvalueG" name="genero-juego" id="4">
+                <label class="custom-control-label" for="4">Rompecabezas</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Carreras" class="custom-control-input chkvalueG" name="genero-juego" id="5">
+                <label class="custom-control-label" for="5">Carreras</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Rol" class="custom-control-input chkvalueG" name="genero-juego" id="6">
+                <label class="custom-control-label" for="6">Rol</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Simulación" class="custom-control-input chkvalueG" name="genero-juego" id="7">
+                <label class="custom-control-label" for="7">Simulación</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Deporte" class="custom-control-input chkvalueG" name="genero-juego" id="8">
+                <label class="custom-control-label" for="8">Deporte</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Estrategia" class="custom-control-input chkvalueG" name="genero-juego" id="9">
+                <label class="custom-control-label" for="9">Estrategia</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Arcade" class="custom-control-input chkvalueG" name="genero-juego" id="10">
+                <label class="custom-control-label" for="10">Arcade</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Bélico" class="custom-control-input chkvalueG" name="genero-juego" id="11">
+                <label class="custom-control-label" for="11">Bélico</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Peleas" class="custom-control-input chkvalueG" name="genero-juego" id="12">
+                <label class="custom-control-label" for="12">Peleas</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Juego de Mesa" class="custom-control-input chkvalueG" name="genero-juego" id="13">
+                <label class="custom-control-label" for="13">Juego de Mesa</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Música" class="custom-control-input chkvalueG" name="genero-juego" id="14">
+                <label class="custom-control-label" for="14">Música</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Plataforma" class="custom-control-input chkvalueG" name="genero-juego" id="15">
+                <label class="custom-control-label" for="15">Plataforma</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Disparo" class="custom-control-input chkvalueG" name="genero-juego" id="16">
+                <label class="custom-control-label" for="16">Disparo</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Survival horror" class="custom-control-input chkvalueG" name="genero-juego" id="17">
+                <label class="custom-control-label" for="17">Survival horror</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Trivia" class="custom-control-input chkvalueG" name="genero-juego" id="18">
+                <label class="custom-control-label" for="18">Trivia</label>
+            </div>                                  
+        </div>            
+    </div>
+
+    <div class="col-md-3">
+        <div class="radio-group ">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="XBOX ONE" class="custom-control-input chkvalueP" name="consola-juego" id="100">
+                <label class="custom-control-label" for="100">XBOX ONE</label>
+            </div>  
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PS4" class="custom-control-input chkvalueP" name="consola-juego" id="200">
+                <label class="custom-control-label" for="200">PS4</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Nintendo Switch" class="custom-control-input chkvalueP" name="consola-juego" id="300">
+                <label class="custom-control-label" for="300">Nintendo Switch</label>
+            </div>                        
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Wii U" class="custom-control-input chkvalueP" name="consola-juego" id="400">
+                <label class="custom-control-label" for="400">Wii U</label>
+            </div>                       
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PS Vita" class="custom-control-input chkvalueP" name="consola-juego" id="500">
+                <label class="custom-control-label" for="500">PS Vita</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" value="3DS" class="custom-control-input chkvalueP" name="consola-juego" id="600">
+                <label class="custom-control-label" for="600">3DS</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Android" class="custom-control-input chkvalueP" name="consola-juego" id="700">
+                <label class="custom-control-label" for="700">Android</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Xbox 360" class="custom-control-input chkvalueP" name="consola-juego" id="800">
+                <label class="custom-control-label" for="800">Xbox 360</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PS3" class="custom-control-input chkvalueP" name="consola-juego" id="900">
+                <label class="custom-control-label" for="900">PS3</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Wii" class="custom-control-input chkvalueP" name="consola-juego" id="1000">
+                <label class="custom-control-label" for="1000">Wii</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PSP" class="custom-control-input chkvalueP" name="consola-juego" id="1100">
+                <label class="custom-control-label" for="1100">PSP</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="DS /DSi" class="custom-control-input chkvalueP" name="consola-juego" id="1200">
+                <label class="custom-control-label" for="1200">DS /DSi</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Windows /Linux" class="custom-control-input chkvalueP" name="consola-juego" id="1300">
+                <label class="custom-control-label" for="1300">Windows /Linux</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Ipad /Iphone" class="custom-control-input chkvalueP" name="consola-juego" id="1400">
+                <label class="custom-control-label" for="1400">Ipad /Iphone</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Xbox" class="custom-control-input chkvalueP" name="consola-juego" id="1500">
+                <label class="custom-control-label" for="1500">Xbox</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PS2" class="custom-control-input chkvalueP" name="consola-juego" id="2800">
+                <label class="custom-control-label" for="2800">PS2</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="GameCube" class="custom-control-input chkvalueP" name="consola-juego" id="1600">
+                <label class="custom-control-label" for="1600">GameCube</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Gameboy Advance" class="custom-control-input chkvalueP" name="consola-juego" id="1700">
+                <label class="custom-control-label" for="1700">Gameboy Advance</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Dreamcast" class="custom-control-input chkvalueP" name="consola-juego" id="1800">
+                <label class="custom-control-label" for="1800">Dreamcast</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="J2ME" class="custom-control-input chkvalueP" name="consola-juego" id="1900">
+                <label class="custom-control-label" for="1900">J2ME</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="PS1" class="custom-control-input chkvalueP" name="consola-juego" id="2000">
+                <label class="custom-control-label" for="2000">PS1</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Nintendo 64" class="custom-control-input chkvalueP" name="consola-juego" id="2100">
+                <label class="custom-control-label" for="2100">Nintendo 64</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Gameboy Color" class="custom-control-input chkvalueP" name="consola-juego" id="2200">
+                <label class="custom-control-label" for="2200">Gameboy Color</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="SNES" class="custom-control-input chkvalueP" name="consola-juego" id="2300">
+                <label class="custom-control-label" for="2300">SNES</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Neo-Geo" class="custom-control-input chkvalueP" name="consola-juego" id="2400">
+                <label class="custom-control-label" for="2400">Neo-Geo</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Arcade" class="custom-control-input chkvalueP" name="consola-juego" id="2500">
+                <label class="custom-control-label" for="2500">Arcade</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="NES" class="custom-control-input chkvalueP" name="consola-juego" id="2600">
+                <label class="custom-control-label" for="2600">NES</label>
+            </div><div class="custom-control custom-checkbox">
+                <input type="checkbox" value="Gameboy" class="custom-control-input chkvalueP" name="consola-juego" id="2700">
+                <label class="custom-control-label" for="2700">Gameboy</label>
+            </div>
+            <input class="white-text" type="text" name="nombreP"id="txtvaluesP"/>
+            <input class="white-text" type="text" name="nombreG"id="txtvaluesG"/>
+        </div>
+    </div>                             -->
+
+    <input id="btn1" class="btn btn-primary btn-lg btn-block" type="submit" value="Aceptar">
+                                       
+          <a href="{% url 'lista_videojuegos' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">regresar</a>                      
+</div>
+</form>
+
+        {% endblock content %}

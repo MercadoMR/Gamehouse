@@ -1,0 +1,291 @@
+   {% extends "baseU.html" %}
+   {% load static %}
+   {% block title %} Juegos {% endblock title%}   
+   {% block content %}
+    <!--JUMBOTRON-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.rgusto').click(function(){
+                var txt1="";
+                $('.rgusto:checked').each(function(){
+                    txt1=$(this).val()
+                });
+                // txt1=txt1.substring(0,txt1.length-1);
+                $('#txtvalues1').val(txt1);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.rguion').click(function(){
+                var txt2="";
+                $('.rguion:checked').each(function(){
+                    txt2=$(this).val()
+                });
+                // txt2=txt2.substring(0,txt2.length-1);
+                $('#txtvalues2').val(txt2);
+            });
+        });
+    </script>
+        <script>
+            $(document).ready(function(){
+                $('.rartes').click(function(){
+                    var txt3="";
+                    $('.rartes:checked').each(function(){
+                        txt3=$(this).val()
+                    });
+                    // txt3=txt3.substring(0,txt3.length-1);
+                    $('#txtvalues3').val(txt3);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('.rjugabilidad').click(function(){
+                    var txt4="";
+                    $('.rjugabilidad:checked').each(function(){
+                        txt4=$(this).val()
+                    });
+                    // txt4=txt4.substring(0,txt4.length-1);
+                    $('#txtvalues4').val(txt4);
+                });
+            });
+        </script>
+            <script>
+                $(document).ready(function(){
+                    $('.rtecnico').click(function(){
+                        var txt5="";
+                        $('.rtecnico:checked').each(function(){
+                            txt5=$(this).val()
+                        });
+                        // txt5=txt5.substring(0,txt5.length-1);
+                        $('#txtvalues5').val(txt5);
+                    });
+                });
+            </script>
+
+    <div class="container game-details">
+        <div class="row">
+
+            <div class="col-md-6 right-box">
+                <img src="{{fimagen.referencia}}">
+            </div>
+            <div class="col-md-6 left-box">
+                <div>
+                <strong><h1>{{VJuego}}</h1></strong>
+                </div>
+                <p>{{VJuego.descripcion}}</p>
+                <p> Caracteristicas </p>
+                <div class="enlaces">
+                    <p>Generos: </p>
+                    <div class="genering">
+                        {{VJuego.generos}}
+                    </div>
+                    <p>Consolas: </p>
+                    <div class="consoling">
+                        {{VJuego.plataformas}}         
+                    </div>
+                    <p>Compañia: </p>
+                    <div class="consoling">
+                        {{VJuego.companias}}         
+                    </div>
+                </div>
+                
+                <form method="POST">
+				{% csrf_token %}                
+                <!-- <p>Calificación: </p>
+                <div class="rating">
+                    <input type="radio" name="star" id ="star1" checked="checked">
+                    <label for="star1"><img src="img/1.png"><h4>Awww</h4></label>
+
+                    <input type="radio" name="star" id ="star2">
+                    <label for="star2"><img src="img/2.png"><h4>¡Oye si!</h4></label>
+
+                    <input type="radio" name="star" id ="star3">
+                    <label for="star3"><img src="img/3.png"><h4>Okey</h4></label>
+
+                    <input type="radio" name="star" id ="star4">
+                    <label for="star4"><img src="img/4.png"><h4>Masomenos</h4></label>
+
+                    <input type="radio" name="star" id ="star5">
+                    <label for="star5"><img src="img/5.png"><h4>Buaaj</h4></label>                    
+                </div>                                 -->
+            </div>
+            <div class=" col-md-6 ">
+                <div class="card">
+                    <div class="card-header">
+                      Escribir comentario...
+                    </div>
+                    <div class="card-black">
+                        <div class="login-text-box text-black">
+                            {{fopinion.as_table}}
+                            <!-- <i class="fa fa-comment" aria-hidden="true"></i>
+                            <textarea  name="comentarios" rows="6" cols="40">Comentario del Videojuego</textarea> -->
+                            
+                        </div>   
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="calificar col-md-4">
+                <div class="text-center col-md-10">
+                    <p>¿Te gusta el arte literaria del juego?
+                        <i class="fa fa-info-circle">
+                            <span class="info-tip">
+                                Historia, narrativa, diálogos y desarrollo de personajes.
+                            </span>
+                        </i>
+                    </p>
+                    <div class="box-calificar">
+                        <input type="radio" value="10" class="rguion" name="literaria" id="10a"><label for="10a">10</label>
+                        <input type="radio" value="9" class="rguion" name="literaria" id="9a"><label for="9a">9</label>
+                        <input type="radio" value="8" class="rguion" name="literaria" id="8a"><label for="8a">8</label>
+                        <input type="radio" value="7" class="rguion" name="literaria" id="7a"><label for="7a">7</label>
+                        <input type="radio" value="6" class="rguion" name="literaria" id="6a"><label for="6a">6</label>
+                        <input type="radio" value="5" class="rguion" name="literaria" id="5a"><label for="5a">5</label>
+                        <input type="radio" value="4" class="rguion" name="literaria" id="4a"><label for="4a">4</label>
+                        <input type="radio" value="3" class="rguion" name="literaria" id="3a"><label for="3a">3</label>
+                        <input type="radio" value="2" class="rguion" name="literaria" id="2a"><label for="2a">2</label>
+                        <input type="radio" value="1" class="rguion" name="literaria" id="1a"><label for="1a">1</label>
+                    </div>
+                </div>
+            </div>
+            <div class="calificar col-md-4">
+                <div class="text-center col-md-10">
+                    <p>¿Te gusta el Arte Sonora en el juego?
+                        <i class="fa fa-info-circle">
+                            <span class="info-tip">
+                                Música y sonidos de ambiente en general.
+                            </span>
+                        </i>
+                    </p>
+                    
+                    <div class="box-calificar ">
+                        <input type="radio" value="10" class="rartes" name="sonora" id="10b"><label for="10b">10</label>
+                        <input type="radio" value="9"  class="rartes" name="sonora" id="9b"><label for="9b">9</label>
+                        <input type="radio" value="8"  class="rartes" name="sonora" id="8b"><label for="8b">8</label>
+                        <input type="radio" value="7"  class="rartes" name="sonora" id="7b"><label for="7b">7</label>
+                        <input type="radio" value="6"  class="rartes" name="sonora" id="6b"><label for="6b">6</label>
+                        <input type="radio" value="5"  class="rartes" name="sonora" id="5b"><label for="5b">5</label>
+                        <input type="radio" value="4"  class="rartes" name="sonora" id="4b"><label for="4b">4</label>
+                        <input type="radio" value="3"  class="rartes" name="sonora" id="3b"><label for="3b">3</label>
+                        <input type="radio" value="2"  class="rartes" name="sonora" id="2b"><label for="2b">2</label>
+                        <input type="radio" value="1"  class="rartes" name="sonora" id="1b"><label for="1b">1</label>
+                    </div>
+                </div>
+            </div>
+            <div class="calificar col-md-4">
+                <div class="text-center col-md-10">
+                    <p>¿Es considerable la duración del juego?
+                        <i class="fa fa-info-circle">
+                            <span class="info-tip">
+                                Duración en la Aventura principal, extras y modos de juego alternativos y 
+                                rejugabilidad del juego.
+                            </span>
+                        </i>
+                    </p>
+                    <div class="box-calificar">
+                        <input type="radio" value="10" class="rjugabilidad" name="duracion" id="10c"><label for="10c">10</label>
+                        <input type="radio" value="9"  class="rjugabilidad" name="duracion" id="9c"><label for="9c">9</label>
+                        <input type="radio" value="8"  class="rjugabilidad" name="duracion" id="8c"><label for="8c">8</label>
+                        <input type="radio" value="7"  class="rjugabilidad" name="duracion" id="7c"><label for="7c">7</label>
+                        <input type="radio" value="6"  class="rjugabilidad" name="duracion" id="6c"><label for="6c">6</label>
+                        <input type="radio" value="5"  class="rjugabilidad" name="duracion" id="5c"><label for="5c">5</label>
+                        <input type="radio" value="4"  class="rjugabilidad" name="duracion" id="4c"><label for="4c">4</label>
+                        <input type="radio" value="3"  class="rjugabilidad" name="duracion" id="3c"><label for="3c">3</label>
+                        <input type="radio" value="2"  class="rjugabilidad" name="duracion" id="2c"><label for="2c">2</label>
+                        <input type="radio" value="1"  class="rjugabilidad" name="duracion" id="1c"><label for="1c">1</label>
+                    </div>
+                </div>
+            </div>  
+
+        </div>
+        <div class="row">            
+            <div class="calificar col-md-4">
+                <div class="col-md-10 text-center">
+                    <p>¿Te gusta Mucho el contenido gráfico del juego?
+                        <i class="fa fa-info-circle">
+                            <span class="info-tip">
+                                Animacion,                                
+                                consistencia en los recursos gráficos y 
+                                escenas del juego
+                            </span>
+                        </i>
+                    </p>                    
+                    <div class="box-calificar">
+                        <input type="radio" value="10" class="rgusto" name="grafico" id="10e"><label for="10e">10</label>
+                        <input type="radio" value="9"  class="rgusto" name="grafico" id="9e"><label for="9e">9</label>
+                        <input type="radio" value="8"  class="rgusto" name="grafico" id="8e"><label for="8e">8</label>
+                        <input type="radio" value="7"  class="rgusto" name="grafico" id="7e"><label for="7e">7</label>
+                        <input type="radio" value="6"  class="rgusto" name="grafico" id="6e"><label for="6e">6</label>
+                        <input type="radio" value="5"  class="rgusto" name="grafico" id="5e"><label for="5e">5</label>
+                        <input type="radio" value="4"  class="rgusto" name="grafico" id="4e"><label for="4e">4</label>
+                        <input type="radio" value="3"  class="rgusto" name="grafico" id="3e"><label for="3e">3</label>
+                        <input type="radio" value="2"  class="rgusto" name="grafico" id="2e"><label for="2e">2</label>
+                        <input type="radio" value="1"  class="rgusto" name="grafico" id="1e"><label for="1e">1</label>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="calificar col-md-4">
+                <div class="col-md-10 text-center">
+                    <p>¿Los requisitos técnicos son exagerados para el juego?
+                        <i class="fa fa-info-circle">
+                            <span class="info-tip">
+                                Conexión a internet, mouse, teclado y micrófono.
+                            </span>
+                        </i>
+                    </p>
+                    <div class="box-calificar">
+                        <input type="radio" value="10" class="rtecnico" name="tecnico" id="10f"><label for="10f">10</label>
+                        <input type="radio" value="9"  class="rtecnico" name="tecnico" id="9f"><label for="9f">9</label>
+                        <input type="radio" value="8"  class="rtecnico" name="tecnico" id="8f"><label for="8f">8</label>
+                        <input type="radio" value="7"  class="rtecnico" name="tecnico" id="7f"><label for="7f">7</label>
+                        <input type="radio" value="6"  class="rtecnico" name="tecnico" id="6f"><label for="6f">6</label>
+                        <input type="radio" value="5"  class="rtecnico" name="tecnico" id="5f"><label for="5f">5</label>
+                        <input type="radio" value="4"  class="rtecnico" name="tecnico" id="4f"><label for="4f">4</label>
+                        <input type="radio" value="3"  class="rtecnico" name="tecnico" id="3f"><label for="3f">3</label>
+                        <input type="radio" value="2"  class="rtecnico" name="tecnico" id="2f"><label for="2f">2</label>
+                        <input type="radio" value="1"  class="rtecnico" name="tecnico" id="1f"><label for="1f">1</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input class="black-text" type="text" name="gusto" id="txtvalues1"/>
+        <input class="black-text" type="text" name="guion"id="txtvalues2"/>
+        <input class="black-text" type="text" name="artes"id="txtvalues3"/>
+        <input class="black-text" type="text" name="jugabilidad"id="txtvalues4"/>
+        <input class="black-text" type="text" name="tecnico"id="txtvalues5"/>
+        <input id="btn1" type="submit" value="Aceptar" >
+    </div>
+</form>                  
+    
+<!-- 
+    <div class="container games">
+        <h3>Juegos Relacionados</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6"><img src="{% static 'img/dota2.jpg' %}" alt=""></div>
+                    <div class="col-6"><img src="{% static 'img/minecraft.jpg' %}" alt=""></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6"><img src="{% static 'img/lol.jpg' %}" alt=""></div>
+                    <div class="col-6"><img src="{% static 'img/Crash_Bash.jpg' %}" alt=""></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6"><img src="{% static 'img/gta-san-andreas.jpg' %}" alt=""></div>
+                    <div class="col-6"><img src="{% static 'img/SuperMarioBrosUDeluxe.jpg' %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+{% endblock content %}

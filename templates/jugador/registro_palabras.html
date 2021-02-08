@@ -1,0 +1,73 @@
+{% extends "baseU.html" %}
+{% load static %}
+{% block title %} Caracteristicas Explicitas {% endblock title%}   
+{% block content %}
+ <!--BODY-->
+ <div>
+   <h1 class="center-align titulo">Escriba 10 palabras <br> que describan los videojuegos <br> de su interes</h1>
+ </div>
+<form method="POST">
+{% csrf_token %}
+<div class="row register-box">
+  <!-- <div class="col-4"></div> -->
+  <div class="col-md-3">
+
+    <div class="login-text-box form-group">
+      <label for="{{fcde.cde0.id_for_label }}" class="col-sm-8">{{fcde.cde0.label}}</label>
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div class="col-sm-12">{{fcde.cde0}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde1.id_for_label }}" class="col-sm-8">{{fcde.cde1.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde1}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde2.id_for_label }}" class="col-sm-8">{{fcde.cde2.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde2}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde3.id_for_label }}" class="col-sm-8">{{fcde.cde3.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde3}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde4.id_for_label }}" class="col-sm-8">{{fcde.cde4.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde4}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde5.id_for_label }}" class="col-sm-8">{{fcde.cde5.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde5}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde6.id_for_label }}" class="col-sm-8">{{fcde.cde6.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde6}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde7.id_for_label }}" class="col-sm-8">{{fcde.cde7.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde7}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde8.id_for_label }}" class="col-sm-8">{{fcde.cde8.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde8}}</div>
+  </div>
+  <div class="login-text-box form-group">
+    <label for="{{fcde.cde9.id_for_label }}" class="col-sm-8">{{fcde.cde9.label}}</label>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="col-sm-12">{{fcde.cde9}}</div>
+  </div>
+  <input href="{% url 'jugador' user.get_username%}" id="btn1" class="btn btn-sucess btn-lg btn-block" type="submit" value="Aceptar">
+  </div>
+</div>
+</form>
+
+
+
+ <!--FOOTER-->
+ {% endblock content %}

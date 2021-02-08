@@ -1,0 +1,52 @@
+   {% extends "base.html" %}
+   {% block title %} Gestión de Usuarios {% endblock title%}   
+   {% block content %}
+    <!--BODY-->    
+    <div>
+        <h1 class="center-align titulo">Gestionar Usuarios</h1>
+        <div class="row center-align ">
+            <div class="col-md-6">
+                <nav >
+                    <form >
+                        <input  class="text-white" type="search" placeholder="Buscar Usuario" aria-label="Buscar Usuario">
+                        <button class="btn btn-sucess btn-lg btn-block" type="submit">Buscar Usuario</button>
+                      </form>
+                </nav> 
+            </div>                                                    
+                <div  id="container-table" >
+                    <table>
+                        <thead>
+                            <tr class="center-align" >
+                                <th>Lista de Usuarios</th>                                                                  
+                            </tr>
+                        
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Correo</td>
+                                <td>Edad</td>
+                                <td>Id Usuario</td>
+                                <td>Eliminar</td>
+                                <td>Modificar</td>
+                            </tr>
+                        </thead>
+                    </thead>
+                        {%for Usuario in dataset %}
+                            <tr>
+                                <td>{{Usuario.nombre}}</td>
+                                <td>{{Usuario.correo}}</td>
+                                <td>{{Usuario.fec_nac}}</td>
+                                <td>{{Usuario.id_usuario}}</td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'eliminar_usuarios' administrador.nombre Usuario.id_usuario %}">Eliminar</a></td>
+                                <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'editar_usuarios' administrador.nombre Usuario.id_usuario %}">Modificar</a></td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                    {%include 'pagination.html' with page=dataset%}                  
+                    <a href="{% url 'registro_usuarios' administrador.nombre %}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Agregar</a>                      
+                </div> 
+            <a href="{% url 'perfil_adm' administrador.nombre %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+        </div>
+    </div>
+    <!--FOOTER-->    
+    {% endblock content %}

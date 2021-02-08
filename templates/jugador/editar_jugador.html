@@ -1,0 +1,74 @@
+{% extends "baseU.html" %}
+{% block title %} Modificar Perfil {% endblock title%}   
+{% block content %}            
+     <!--BODY--> 
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+     <div>
+        <h1 class="center-align titulo">Modificar Perfil</h1>
+     </div>
+        <!-- <div class="login-text-box">        
+            <form action="." method="POST">
+                {% csrf_token %}
+                <div class="row" id="container-table" >
+                    <table>
+                        {{fusuario.as_table}}
+                        {{fjugador.as_table}}
+                        {{fuser.as_table}}
+                    </table>
+                </div>
+                <input class="btn btn-sucess btn-lg btn-block" type="submit" value="Submit form">
+            </form>                                                                  -->
+            <div class="row register-box">
+                <!--<div class="col-4"></div> --> 
+                <div class="col-md-3">  
+                    <form method="POST">
+                    {% csrf_token %}
+                        <div class="login-text-box form-group">
+                            <label for="{{fusuario.nombre.id_for_label }}" class="col-sm-8">{{fusuario.nombre.label}}</label>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fusuario.nombre}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fusuario.apellido.id_for_label }}" class="col-sm-8">{{fusuario.apellido.label}}</label>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fusuario.apellido}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fusuario.correo.id_for_label }}" class="col-sm-8">{{fusuario.correo.label}}</label>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fusuario.correo}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fusuario.fec_nac.id_for_label }}" class="col-sm-8">{{fusuario.fec_nac.label}}</label>
+                            <i class="fas fa-calendar-week" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fusuario.fec_nac}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fjugador.nickname.id_for_label }}" class="col-sm-8">{{fjugador.nickname.label}}</label>
+                            <i class="fa fa-user-ninja" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fjugador.nickname}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fuser.username.id_for_label }}" class="col-sm-8">{{fuser.username.label}}</label>
+                            <i class="fa fa-user-ninja" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fuser.username}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fuser.password1.id_for_label }}" class="col-sm-8">{{fuser.password1.label}}</label>
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fuser.password1}}</div>
+                        </div>
+                        <div class="login-text-box form-group">
+                            <label for="{{fuser.password2.id_for_label }}" class="col-sm-8">{{fuser.password2.label}}</label>
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <div class="col-sm-12">{{fuser.password2}}</div>
+                        </div>
+                    </div> 
+                <input class="btn btn-sucess btn-lg btn-block" type="submit" value="Submit form">
+            </form>
+        </div>
+    <div>
+        <a href="{% url 'jugador' user.get_username %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+    </div>
+     {% endblock content %}

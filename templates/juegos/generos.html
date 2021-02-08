@@ -1,0 +1,43 @@
+   {% extends "baseU.html" %}
+   {% load static %}
+   {% block title %} Generos {% endblock title%}   
+   {% block content %}
+    <!--BODY-->
+    <div class="container-generos">
+        <header>
+            <div class="tiposgeneros" id="tiposgeneros">
+                <a href="#" class="activo">Todos</a>
+                <a href="#">Acción</a>
+                <a href="#">Aventura</a>
+                <a href="#">Educativo</a>
+                <a href="#">Rompecabezas</a>
+                <a href="#">Carreras</a>
+                <a href="#">Rol</a>
+                <a href="#">Simulación</a>
+                <a href="#">Deporte</a>
+                <a href="#">Estrategia</a>
+                <a href="#">Arcade</a>
+                <a href="#">Bélico</a>
+                <a href="#">Peleas</a>
+                <a href="#">Juego de Mesa</a>
+                <a href="#">Música</a>
+                <a href="#">Plataforma</a>
+                <a href="#">Disparos</a>
+                <a href="#">Survival horror</a>
+                <a href="#">Trivia</a>
+            </div>
+        </header>
+        <section class="grid" id="grid">
+  {%for LOL in fImagen %}
+            <div class="item" 
+            data-categoria="lucha"
+            data-etiquetas="lucha mortal combat play station xbox">
+                <div class="item-games">
+                    <img src="{{LOL.referencia}}" alt="">
+                </div>
+            </div>     
+  {%endfor%}              
+        </section>
+    </div>
+    
+{% endblock content %}

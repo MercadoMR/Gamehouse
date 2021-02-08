@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+   {% block title %} Caracteristicas {% endblock title%} 
+   {% block content %}
+    <!--BODY-->
+
+    <div>
+      <h1 class="center-align titulo">Caracteristicas DE</h1>
+    </div>
+    <div class="row" id="container-table" >
+        <table>
+            <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                  <th>6</th>
+                  <th>7</th>
+                  <th>8</th>
+                  <th>9</th>
+                  <th>10</th>
+              </tr>
+          </thead>
+            {%for caracteristica in fvcde %}        
+            <tr>
+              <td>{{caracteristica.cde}}</td>
+              <td>{{caracteristica.cardes1}}</td>
+              <td>{{caracteristica.cardes2}}</td>
+              <td>{{caracteristica.cardes3}}</td>
+              <td>{{caracteristica.cardes4}}</td>
+              <td>{{caracteristica.cardes5}}</td>
+              <td>{{caracteristica.cardes6}}</td>
+              <td>{{caracteristica.cardes7}}</td>
+              <td>{{caracteristica.cardes8}}</td>
+              <td>{{caracteristica.cardes9}}</td>
+              <td>{{caracteristica.cardes10}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        {%include 'pagination.html' with page=fvcde%}                
+    </div>
+    <!--navegador de pie-->
+    <div class="row">
+        <a href="{% url 'perfil_adm' administrador.nombre%}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+    </div>
+    <!--FOOTER-->
+    {% endblock content %}

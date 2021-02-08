@@ -1,0 +1,37 @@
+{% extends "baseU.html"%}
+{% block title %} Mi Perfil{% endblock title %}
+{% block content %}    
+        <!--BODY-->
+        {% if user.get_username == jugador.nickname %}
+        <div>
+            <h1 class="center-align titulo">BIENVEN1D0 <br> ***** {{jugador.nickname|upper}} *****</h1>
+        </div> 
+        <div class="row register-box">            
+            <div class="col-md-4 center-align">
+                <a href="{% url 'dashboard' user.get_username %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Mi dashboard</a>
+                <a href="{% url 'editar_jugador' jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Modificar Perfil</a>
+                <a href="{% url 'gusto' jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Modificar Gustos</a>                
+                <a href="{% url 'mis_opiniones' jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Mis Opiniones</a>                
+                <a href="{% url 'eliminar_jugador'  jugador.nickname %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Eliminar Perfil</a>
+                <a href="{% url 'logout' %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Salir del Perfil</a>                
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <h1 class="center-align titulo">{{jugador.nickname|upper}} </h1>
+        </div> 
+        <div class="row register-box">
+            <div class="col-md-4 text-white">
+                <H2>Datos del jugador</H2>
+                <h3>Nombre: {{jugador.usuario.nombre}} </h3>
+                <h3>Edad: {{jugador.usuario.fec_nac}} </h3>
+            </div>
+            <div class="col-md-3 center-align">                
+                <a href="{% url 'opinion' jugador.nickname%}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Sus Opiniones</a>                                
+            </div>
+        </div>
+        {% endif %}
+         
+
+
+{% endblock content %}

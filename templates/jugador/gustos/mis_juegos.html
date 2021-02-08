@@ -1,0 +1,74 @@
+{% extends "baseU.html" %}
+   {% block title %} SELECCION DE VIDEOJUEGOS {% endblock title%}   
+   {% block content %}
+    <!--BODY-->
+    
+    <div>
+        <h1 class="center-align titulo">Selecciona 3 videojuegos preferidos</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="center-align titulo">Juegos Seleccionados</h1>
+                <div id="container-table" >
+                    <table>
+                        <thead>
+                            <tr class="center-align" >
+                                <th>Título</th>
+                                <th>ID</th>
+                                <td>Eliminar</td>
+                            </tr>
+                        </thead>
+                        {%for favorito in favoritos %}
+                          <tr>
+	                          <td>{{favorito.id_juego}}</td>
+                              <td>{{favorito.titulo}}</td>                       
+                              <td>{{favorito.anio}}</td>
+                              <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'eliminar_mi_juego' user.get_username favorito.id_juego %}">Eliminar</a></td>
+                          </tr>
+                      {%endfor%}
+                    </table>
+                  </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <nav >
+                        <form class="form-inline">
+                            <input class="text-white" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-sucess btn-lg btn-block" type="submit">Search</button>
+                          </form>
+                      </nav>
+                </div>     
+                <!-- class="row"            -->
+                  <div  id="container-table" >
+                    <table>
+                        <thead>
+                            <tr class="center-align" >
+                                <th>Título</th>
+                                <th>Año</th>
+                                <th>Generos</th>
+                                <th>Consolas</th>
+                                <th>ID</th>
+                                <th>Agregar</th>
+                            </tr>
+                        </thead>
+                        {%for juego in juegos %}
+                          <tr>
+                              <td>{{juego.titulo}}</td>
+                              <td>{{juego.anio}}</td>
+                              <td>{{juego.generos.genero}}</td>
+                               <td>{{juego.plataformas.plataforma}}</td>                                  
+                              <td>{{juego.id_juego}}</td>                            
+                              <td><a class="btn btn-primary btn-lg btn-block" name="" type="submit" href="{% url 'agregar_mi_juego' user.get_username juego.id_juego %}">Agregar</a></td>
+                          </tr>
+                      {%endfor%}
+                    </table>
+                  </div>
+            </div>
+            <a href="{% url 'gusto' user.get_username %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Aceptar</a>
+            <a href="{% url 'gusto' user.get_username %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+    {% endblock content %}

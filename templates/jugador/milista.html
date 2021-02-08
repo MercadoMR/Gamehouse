@@ -1,0 +1,26 @@
+{% extends "baseU.html" %}
+{% block title %} Mis Videojuegos {% endblock title%}
+{% block content %}
+ <!--BODY-->
+  <div>
+    <h1 class="center-align titulo">Mis Videojuegos</h1>
+  </div>
+ <div class="col-md-6 " id="container-table" >                    
+    <table>
+      <thead>
+          <tr class="center-align" >
+              <th>Título</th>
+          </tr>
+      </thead>
+      {%for VJuego in fMLista %}
+        <tr>
+            <td>{{VJuego.juego.titulo}}</td>
+        </tr>
+    {%endfor%}
+  </table>
+{%include 'pagination.html' with page=fMLista%}	                    
+</div>
+
+
+ <!--FOOTER-->
+ {% endblock content %}

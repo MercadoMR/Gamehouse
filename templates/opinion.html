@@ -1,0 +1,58 @@
+{% extends "baseU.html" %}
+   {% block title %}Opiniones del jugador {% endblock title%} 
+   {% block content %} 
+    <!--BODY-->
+
+    <div>
+      <h1 class="center-align titulo">Opiniones de {{jugador.nickname}}</h1>
+    </div>
+    <div class="row" id="container-table" >
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Comentario</th>
+                    <th>Puntuación</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            {%for opinioni in fOpinion %}        
+            <tr>
+              <td>{{opinioni.juego}}</td>
+              <td>{{opinioni.comentario}}</td>
+              <td>{{opinioni.gusto}}</td>
+              <td>{{opinioni.jugador}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        {%include 'pagination.html' with page=fOpinion%}
+        
+        <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+              <li class="page-item disabled">
+                {%if page.has_previous%}
+                <a class="page-link" href="?page={{page.previous_page_number}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span></a>
+                {%endif%}            
+              </li>
+              <li class="page-item"><a class="page-link" href="#">Pagina {{page.number}} de {{page.paginator.num_pages}}</a></li>            
+              
+              <li class="page-item">
+                {%if page.has_next%}
+                <a class="page-link"  href="?page={{page.next_page_number}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span></a>
+                {%endif%}                
+              </li>
+
+            </ul>
+          </nav> -->
+    </div>
+    <!--navegador de pie-->
+    <div class="row">
+        <a href="{% url 'jugador' jugador.nickname %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+    </div>
+    <!--FOOTER-->
+    {% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}    
+{% block title %} REGISTRAR GENERO & PLATAFORMA {% endblock title %}
+{% block content %}
+<div>
+    <h1 class="center-align titulo">REGISTRAR GENERO & PLATAFORMA</h1>
+</div>
+<div class="login-text-box">
+    <form action="." method="POST">
+	    {% csrf_token %}
+		<div class="row register-box">
+			<div class="col-md-3">
+			<div class="login-text-box form-group">
+                <label for="{{fgenero.nombre.id_for_label }}" class="col-sm-8">{{fgenero.nombre.label}}</label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fgenero.nombre}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fplataforma.nombre.id_for_label }}" class="col-sm-8">{{fplataforma.nombre.label}}</label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fplataforma.nombre}}</div>
+			</div>
+			<input href="{% url 'genero_plataforma' administrador.nombre%}" type="submit" value="Submit form">
+		</div>
+		</div>
+	    </form>                
+		<div class="col-md-4">
+                <a href="{% url 'genero_plataforma' administrador.nombre%}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Aceptar</a>                
+              </div>
+          </div>        
+ {% endblock content %}

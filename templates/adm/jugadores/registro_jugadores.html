@@ -1,0 +1,113 @@
+{% extends "base.html" %}    
+{% block title %} REGISTRAR USUARIO {% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.chkvalueG').click(function(){
+            var txt1="";
+            $('.chkvalueG:checked').each(function(){
+                txt1+=$(this).val()+","
+            });
+            txt1=txt1.substring(0,txt1.length-1);
+            $('#txtvaluesG').val(txt1);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('.chkvalueP').click(function(){
+            var txt="";
+            $('.chkvalueP:checked').each(function(){
+                txt+=$(this).val()+","
+            });
+            txt=txt.substring(0,txt.length-1);
+            $('#txtvaluesP').val(txt);
+        });
+    });
+</script>
+<div>
+    <h1 class="center-align titulo">REGISTRAR USUARIO</h1>
+</div>
+<form method="POST">
+    {% csrf_token %}
+<div class="row register-box">
+    <div class="col-md-3">  
+        
+            <div class="login-text-box form-group">
+                <label for="{{fusuario.nombre.id_for_label }}" class="col-sm-8">{{fusuario.nombre.label}}</label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fusuario.nombre}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fusuario.apellido.id_for_label }}" class="col-sm-8">{{fusuario.apellido.label}}</label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fusuario.apellido}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fusuario.correo.id_for_label }}" class="col-sm-8">{{fusuario.correo.label}}</label>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fusuario.correo}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fusuario.fec_nac.id_for_label }}" class="col-sm-8">{{fusuario.fec_nac.label}}</label>
+                <i class="fas fa-calendar-week" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fusuario.fec_nac}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fjugador.nickname.id_for_label }}" class="col-sm-8">{{fjugador.nickname.label}}</label>
+                <i class="fa fa-user-ninja" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fjugador.nickname}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fuser.username.id_for_label }}" class="col-sm-8">{{fuser.username.label}}</label>
+                <i class="fa fa-user-ninja" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fuser.username}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fuser.password1.id_for_label }}" class="col-sm-8">{{fuser.password1.label}}</label>
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fuser.password1}}</div>
+            </div>
+            <div class="login-text-box form-group">
+                <label for="{{fuser.password2.id_for_label }}" class="col-sm-8">{{fuser.password2.label}}</label>
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <div class="col-sm-12">{{fuser.password2}}</div>
+            </div>
+        </div>
+        <div class="row text-black">
+            {% for value,label in fjugador.generos.field.choices %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <li>
+                    <label class="checkbox-label-container">
+                        <input type="checkbox" value="{{ value }}" name="generos">
+                        <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                            <strong>
+                            <span id="{{ value }}">{{ label }}</span></a></strong>
+                    </label>
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row text-black">
+            {% for value,label in fjugador.plataformas.field.choices %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <li>
+                    <label class="checkbox-label-container">
+                        <input type="checkbox" value="{{ value }}" name="plataformas">
+                        <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                            <strong>
+                            <span id="{{ value }}">{{ label }}</span></a></strong>
+                    </label>
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+            <input id="btn1"class="btn btn-primary btn-lg btn-block" type="submit" value="Aceptar" >
+            <a href="{% url 'gestion_usuarios' administrador.nombre %}" class="btn btn-primary btn-lg btn-block" name="" type="submit">regresar</a>                          
+    </div>
+</form>
+{% endblock content %}

@@ -1,0 +1,24 @@
+   {% extends "base.html" %}
+   {% block title %} Perfil Administrador {% endblock title%}   
+   {% block content %}
+                       
+        <!--BODY-->    
+        <h1 class="center-align titulo">Perfil Administrador</h1>
+        <div class="row " >
+            <div class="col-md-3  center-align card border-primary mb-3">
+                <h4>ADMINISTRADOR<h4>
+                <strong><H3>{{administrador.nombre}}</H3></strong>
+                <H3>N° {{administrador.usuario.id_usuario}}</H3>
+                <H3>BUBACORP</H3> 
+            </div>            
+            <div class="col-md-3 center-align card text-white bg-info mb-3" ">
+                <a href="{% url 'genero_plataforma' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Gestionar GP</a>
+                <a href="{% url 'ViewcaracteristicasPU' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Caracteristicas PU</a>
+                <a href="{% url 'ViewcaracteristicasDE' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Caracteristicas DE</a>
+                <a href="{% url 'lista_videojuegos' administrador.nombre%}" class="btn btn-warning btn-lg btn-block" name="" type="submit">Gestionar Videojuego</a>
+                <a href="{% url 'gestion_usuarios' administrador.nombre%}" class="btn btn-primary btn-lg btn-block" name="" type="submit">Gestionar Usuarios</a>
+                <a href="{% url 'signout' administrador.nombre%}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Salír</a>         
+            </div>
+        </div>
+
+   {% endblock content %}

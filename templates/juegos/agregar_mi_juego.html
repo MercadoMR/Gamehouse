@@ -1,0 +1,19 @@
+   {% extends "baseU.html" %}
+   {% block title %} AGREGAR JUEGO {% endblock title%}
+   {% block content %}
+    <!--BODY-->
+    
+    <div>
+        <h1 class="center-align titulo">¿Estas seguro de AGREGAR este juego?</h1>
+        <div class="row">
+          <form method="POST">
+            {%csrf_token%}
+            <input  href="{% url 'ver_juego' juego.id_juego%}" class="btn btn-primary btn-lg btn-block" type = "submit" value="YES">
+            <a href="{% url 'ver_juego' juego.id_juego%}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Cancelar</a>
+          </form>                                                                    
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+    {% endblock content %}

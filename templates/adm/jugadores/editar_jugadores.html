@@ -1,0 +1,46 @@
+{% extends "base.html" %}    
+{% block title %} Editar Usuario {% endblock title %}
+{% block content %}
+<div>
+    <h1 class="center-align titulo">Editar Usuario</h1>
+</div>
+<form method="POST">
+	{% csrf_token %}
+<div class="row register-box">
+	<div class="col-md-3">  
+		
+			<div class="login-text-box form-group">
+				<label for="{{fusuario.nombre.id_for_label }}" class="col-sm-8">{{fusuario.nombre.label}}</label>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<div class="col-sm-12">{{fusuario.nombre}}</div>
+			</div>
+			<div class="login-text-box form-group">
+				<label for="{{fusuario.apellido.id_for_label }}" class="col-sm-8">{{fusuario.apellido.label}}</label>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<div class="col-sm-12">{{fusuario.apellido}}</div>
+			</div>
+			<div class="login-text-box form-group">
+				<label for="{{fusuario.correo.id_for_label }}" class="col-sm-8">{{fusuario.correo.label}}</label>
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+				<div class="col-sm-12">{{fusuario.correo}}</div>
+			</div>
+			<div class="login-text-box form-group">
+				<label for="{{fusuario.fec_nac.id_for_label }}" class="col-sm-8">{{fusuario.fec_nac.label}}</label>
+				<i class="fas fa-calendar-week" aria-hidden="true"></i>
+				<div class="col-sm-12">{{fusuario.fec_nac}}</div>
+			</div>
+			<div class="login-text-box form-group">
+				<label for="{{fjugador.nickname.id_for_label }}" class="col-sm-8">{{fjugador.nickname.label}}</label>
+				<i class="fa fa-user-ninja" aria-hidden="true"></i>
+				<div class="col-sm-12">{{fjugador.nickname}}</div>
+			</div>
+	    <input class="btn btn-sucess btn-lg btn-block" type="submit" value="Submit form">
+		
+	</div>
+</div> 
+</form> 	
+		<div class="col-md-4">
+                <a href="{% url 'gestion_usuarios' administrador.nombre %}" class="btn btn-sucess btn-lg btn-block" name="" type="submit">Aceptar</a>                
+              </div>
+                
+ {% endblock content %}

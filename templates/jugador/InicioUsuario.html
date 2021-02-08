@@ -1,0 +1,137 @@
+{% extends "baseU.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock title%}
+{% block content %}
+<script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
+<script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".hamburger").click(function(){
+    $(".wrapper").toggleClass("active")
+  })
+});
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('.chkvalue').click(function(){
+            var txt1="";
+            if($("#Primera").val().length > 0){
+              txt1=$("#Primera").val()+","+$("#Segunda").val()+","+$("#Tercera").val();
+            }
+            txt1=txt1.substring(0,txt1.length);
+            $('#txtvalues').val(txt1);
+        });
+    });
+</script>
+    
+    <hr>
+    <!--BODY-->
+    <div class="wrapper">
+    <div class="main_body">
+
+		<div class="sidebar_menu">
+	        <div class="inner__sidebar_menu">
+
+	        	<ul>
+              <li class="dropdown">
+                <a class="nav__link">
+                  <span class="icon">
+                    <i class="bx bx-bookmark"></i></span>
+                  <span class="list">Mis Recomendaciones</span></a>
+                <div>
+                  <a href="" class="nav__link">Mis palabras</a>
+                  <a href="{% url 'perfil_user' %}" class="nav__link">Palabras del juego</a>
+                  <a href="{% url 'perfil_user' %}" class="nav__link">Genero y Plataforma</a>
+                  <a href="{% url 'perfil_user' %}" class="nav__link">TF-IDF</a>
+                </div>
+              </li>
+                  <li class="dropdown">
+                    <a href="{% url 'caracteristicasDE' user.id%}" class="nav__link">
+                      <span class="icon">
+                        <i class="bx bx-user nav__icon"></i></span>
+                      <span class="list">Mis palabras</span>
+                    </a>
+                    <!-- <a class="nav__link">
+                      <span class="icon">
+                        <i class="bx bx-bookmark"></i></span>
+                      <span class="list">Palabras Clave</span></a>
+                    <div class="nav__link_area">
+                        <input class="nav__link chkvalue" type="text" name="Primera" id='Primera' placeholder="Primera">
+                        <input class="nav__link chkvalue" type="text" name="Segunda" id='Segunda' placeholder="Segunda">
+                        <input class="nav__link chkvalue" type="text" name="Tercera" id='Tercera' placeholder="Tercera">
+                        <input class="white-text" type="text" name="valores" id="txtvalues"/>
+                        <a href="#"  name="" type="submit">Aceptar </a>
+                    </div> -->
+                  </li>
+                  <li>
+		            <a href="{% url 'perfil_user' %}" class="nav__link">
+		              <span class="icon">
+		              	<i class="bx bx-user nav__icon"></i></span>
+		              <span class="list">Mi perfil</span>
+		            </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'MiLista' user.id%}" class="nav__link">
+                      <span class="icon">
+                        <i class="bx bx-bookmark"></i></span>
+                      <span class="list">Mi Lista de juegos</span>
+                    </a>
+                  </li>                  
+		          <div>
+                <li>
+                  <a href="{% url 'signout' %}" class="nav__link">
+                    <span class="icon"><i class="bx bx-log-out-circle"></i></span>
+                    <span class="list">Salir</span>
+                  </a>
+                </li>
+              </div>
+
+		        <div class="hamburger">
+			        <div class="inner_hamburger">
+			            <span class="arrow">
+                            <i class='bx bx-chevron-left'></i>
+			                <i class='bx bx-chevron-right'></i>
+			            </span>
+			        </div>
+			    </div>
+
+	        </div>
+	    </div>
+	    <div class="container"></div>
+    </div>
+
+</div>
+<!-- {%for LOL in fJuego %}
+  <div class="container-generos">
+  <section class="grid" id="grid">
+    <a href="{% url 'VVJuego' LOL.id_juego%}"><h4>{{LOL.titulo}}</h4></a>
+    <h4>{{LOL.id_juego}}</h4>
+  </section>
+  </div>
+{%endfor%} -->
+
+
+
+<div class="container-generos">
+  <div class="row">
+  {%for LOL,juego in fvjuego %}
+    <div class="col-sm-6 col-md-4">
+      <a href="{% url 'VVJuego' LOL.id_imagen user.id%}">
+        <div class="item"
+            data-categoria="acción-aventura"
+    data-etiquetas="acción aventura halo xbox">
+            <img src="{{LOL.referencia}}">
+        </div>
+        {{juego.titulo}}
+      </a>
+    </div>
+  {%endfor%}
+  </div>
+</div>
+
+{% endblock content %}

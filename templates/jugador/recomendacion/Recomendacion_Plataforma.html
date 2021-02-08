@@ -1,0 +1,129 @@
+{% extends "baseU.html" %}
+{% block title %} Recomendacion Plataforma {% endblock title%}
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+}
+  
+.videogame-card {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    color: #A9A8A3;
+    padding: 40px 0;
+  }
+  
+.container_videogame {
+    margin: 0 auto;
+    width: 780px;
+    height: 1000px;
+    background: #F0F0ED;
+    border-radius: 5px;
+    position: relative;
+  }
+
+.cbp-rfgrid {
+margin: 90px 0 0 0;
+padding: 20px;
+list-style: none;
+position: absolute;
+width: 100%;
+}
+
+.cbp-rfgrid li {
+position: relative;
+float: left;
+overflow: hidden;
+width: 25%; /* Fallback */
+width: -webkit-calc(100% / 4);
+width: calc(100% / 4);
+}
+
+.cbp-rfgrid li a,
+.cbp-rfgrid li a img {
+display: block;
+width: 100%;
+cursor: pointer;
+}
+
+.cbp-rfgrid li a img {
+max-width: 100%;
+opacity: 0;
+
+}
+
+/* Flexbox is used for centering the heading */
+.cbp-rfgrid li a div {
+position: absolute;
+left: 10px;
+top: 20px;
+right: 10px;
+bottom: 20px;
+background: rgba(24, 66, 80, 0.945);
+display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: flex;
+-webkit-align-items: center;
+-moz-align-items: center;
+-ms-align-items: center;
+align-items: center;
+text-align: center;
+opacity: 1;
+}
+
+.cbp-rfgrid li a:hover div {
+opacity: .1;
+}
+.cbp-rfgrid li a:hover img {
+opacity: 1;
+
+}
+
+.cbp-rfgrid li a div strong {
+width: 100%;
+color: #fff;
+text-transform: uppercase;
+font-size: 1.2em;
+letter-spacing: 2px;
+padding: 0 8px;
+}
+</style>
+
+
+<div>
+    <h1 class="center-align titulo">Encontramos estos juegos similares por Plataforma</h1>
+</div>
+
+
+<div class="videogame-card">
+    <div class="container_videogame">
+    <div class="col-3"></div>
+    <div class="col-12">
+    {%for lista in listas %}
+        <ul class="cbp-rfgrid">
+        <p class="center-align titulo"> {{lista.descripcion}} </p>
+        <div class="row">
+      	    {%for juego in lista.juegos.all %}      		  
+      		    <li><a href="{% url 'ver_juego' juego.id_juego%}"><img src='https://www.mobygames.com/images/covers/s/392832-that-trivia-game-playstation-4-front-cover.jpg' width="520" height="180" ></img><div><strong>{{juego.titulo}}</strong></div></a></li>		 
+            {%endfor%}
+        </div>
+        {%endfor%}
+        {%include 'pagination.html' with page=listas%}
+    </div>
+</div>
+</div>
+  
+
+<div>
+    <a href="{% url 'recomendacion' user.get_username %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Atras</a>
+</div>
+
+{% endblock content %}
+{% block scripts %}
+{% endblock scripts %}

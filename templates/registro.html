@@ -1,0 +1,153 @@
+{% extends "base.html" %}    
+{% load static %}
+{% block title %} Registro {% endblock title %}
+{% block content %}
+<div>
+    <h1 class="center-align titulo">Registro</h1>
+</div>
+<form method="POST">
+{% csrf_token %}
+<div class="row register-box">
+<!-- #<div class="col-4"></div> -->
+<div class="col-md-3">
+
+	 {% for campo in fusuario %}
+	 <div class="login-text-box form-group">
+            <label for="{{campo.id_for_label}}" class="col-sm-8"> {{ campo.label }} </label>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <div class="col-sm-12"> {{ campo }} </div>
+            {% if campo.help_text %}
+             <small style="color: grey;">{{ campo.help_text | safe }}</small>
+            {% endif %}
+            {% for error in campo.errors %}
+           	 <p style="color: red;">ERROR: {{ error }}</p>
+            {% endfor %}
+     </div>
+     {% endfor %}
+	 
+     <div class="login-text-box form-group">
+            <label for="{{fjugador.nickname.id_for_label }}" class="col-sm-8">{{fjugador.nickname.label}}</label>
+            <i class="fa fa-user-ninja" aria-hidden="true"></i>
+            <div class="col-sm-12">{{fjugador.nickname}}</div>
+            {% if nickname.help_text %}
+             <small style="color: grey;">{{ nickname.help_text | safe }}</small>
+            {% endif %}
+            {% for error in nickname.errors %}
+           	 <p style="color: red;">ERROR: {{ error }}</p>
+            {% endfor %}
+     </div>
+     <div class="login-text-box form-group">
+            <label for="{{fuser.username.id_for_label }}" class="col-sm-8">{{fuser.username.label}}</label>
+            <i class="fa fa-user-ninja" aria-hidden="true"></i>
+            <div class="col-sm-12">{{fuser.username}}</div>
+        </div>
+        <div class="login-text-box form-group">
+            <label for="{{fuser.password1.id_for_label }}" class="col-sm-8">{{fuser.password1.label}}</label>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <div class="col-sm-12">{{fuser.password1}}</div>
+            <small style="color: grey;">Tu contraseña debe de minimo 8 caracteres con Mayusculas,Minusculas, Simbolos y Numeros</small>
+            {% if fuser.errors %}
+            {% for field in fuser %}
+                {% for error in field.errors %}
+                <p style="color: red;">ERROR:{{ error|escape }}</p>                    
+                {% endfor %}
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="login-text-box form-group">
+            <label for="{{fuser.password2.id_for_label }}" class="col-sm-8">{{fuser.password2.label}}</label>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <div class="col-sm-12">{{fuser.password2}}</div>
+            <small style="color: grey;">Repita su contraseña </small>
+            {% for error in password2.errors %}
+           	 <p style="color: red;">ERROR: {{ error }} {{ password2.errors }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h1 class="center-align titulo">Elija sus <br> Generos preferidos</h1>
+    <div class="row text-black">
+        {% for value,label in fjugador.generos.field.choices %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <li>
+                <label class="checkbox-label-container">
+                    <input type="checkbox" value="{{ value }}" name="generos">
+                    <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                        <strong>
+                        <span id="{{ value }}">{{ label }}</span></a></strong>
+                </label>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <div>
+        <h1 class="center-align titulo">Elija sus <br> Plataformas preferidas</h1>
+    <div class="row text-black">
+        {% for value,label in fjugador.plataformas.field.choices %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <li>
+                <label class="checkbox-label-container">
+                    <input type="checkbox" value="{{ value }}" name="plataformas">
+                    <span class="checkmark"></span><a href="https://codechef.com/problems/{{label}}" target="_blank">
+                        <strong>
+                        <span id="{{ value }}">{{ label }}</span></a></strong>
+                </label>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <input id="btn1" class="btn btn-sucess btn-lg btn-block" type="submit" value="Aceptar">
+</div>          
+</form>
+<div class="row register-box"></div>
+</div>
+
+{% endblock content %}
+{% block scripts %}
+<!-- Se requieren los siguientes enlaces para que funcione el calendario selector -->
+<!-- Consultar https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    $("#id_fec_nac").datepicker({
+      format:'dd/mm/yyyy',
+    });
+  });
+</script>
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.chkvalueG').click(function(){
+            var txt1="";
+            $('.chkvalueG:checked').each(function(){
+                txt1+=$(this).val()+","
+            });
+            txt1=txt1.substring(0,txt1.length-1);
+            $('#txtvaluesG').val(txt1);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('.chkvalueP').click(function(){
+            var txt="";
+            $('.chkvalueP:checked').each(function(){
+                txt+=$(this).val()+","
+            });
+            txt=txt.substring(0,txt.length-1);
+            $('#txtvaluesP').val(txt);
+        });
+    });
+</script>
+
+{% endblock scripts %}

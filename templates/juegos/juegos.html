@@ -1,0 +1,23 @@
+{% extends "baseU.html" %}
+{% load static %}
+{% block title %} Juegos {% endblock title%}
+{% block content %}
+
+<div class="container-generos">
+  <div class="row">
+  {%for juego,imagen in juegos %}
+    <div class="col-sm-6 col-md-4">
+      <a href="{% url 'ver_juego' juego.id_juego%}">
+        <div class="item"
+            data-categoria="acción-aventura"
+            data-etiquetas="acción aventura halo xbox">
+            <img src="{{imagen.referencia}}">
+        </div>
+        {{juego.titulo}}
+      </a>
+    </div>
+  {%endfor%}
+  </div>
+</div>
+
+{% endblock content %}

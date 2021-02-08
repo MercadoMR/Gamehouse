@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Prueba {% endblock title%}
+{% block content %}
+<h1> Página de prueba para direccionamientos </h1>
+<h2> Si ves esto, significa que funciona</h2>
+{% for elemento in conjunto_1 %}
+	<h2>Juego: {{elemento.titulo}} </h2>
+	<h2>Id del juego: {{elemento.id_juego}} </h2>
+{% endfor %}
+{% endblock content %}
+{% block scripts %}
+{% endblock scripts %}

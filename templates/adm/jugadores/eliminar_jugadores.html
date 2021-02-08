@@ -1,0 +1,17 @@
+   {% extends "base.html" %}
+   {% block title %} Eliminar Usuario {% endblock title%}   
+   {% block content %}
+    <!--BODY-->
+    
+    <div>
+        <h1 class="center-align titulo">¿Estas seguro de borrar a este Usuario?</h1>
+        <div class="row">
+          <form method="POST">
+            {%csrf_token%}
+            <input  href="{% url 'gestion_usuarios' administrador.nombre % }" class="btn btn-primary btn-lg btn-block" type = "submit" value="YES">
+            <a href="{% url 'gestion_usuarios' administrador.nombre %}" class="btn btn-danger btn-lg btn-block" name="" type="submit">Cancelar</a>
+          </form>                                                                    
+        </div>
+    </div>
+    <!--FOOTER-->
+    {% endblock content %}
